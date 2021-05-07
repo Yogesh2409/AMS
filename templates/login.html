@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+  </head>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    img {
+  height: 63px;
+  display: block;
+  float: left;
+  margin: -11px 17px;
+  cursor: pointer;
+}
+h1 {
+    color:rgb(255, 0, 242);
+  display: flex;
+  margin: -37% -101px -6% 0%;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+.navbar {
+  margin-top: 20px;
+    margin-left:16% ;
+    margin-right: 1%;
+  background-color: rgb(49, 49, 49);
+  border-radius: 30px;
+}
+.navbar ul {
+  overflow: auto;
+}
+.navbar li {
+  float: right;
+  list-style: none;
+  margin: 13px 20px;
+}
+.navbar li a {
+  padding: 3px 30px;
+  text-decoration: none;
+  color: white;
+  font-family: "Merriweather Sans", sans-serif;
+}
+.navbar li a:hover {
+  color: rgb(22, 119, 255);
+}
+
+.form-container{
+    margin-top: 4%;
+    margin-left: -18px;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:linear-gradient(rgb(34, 0, 121),black);
+    background-size: cover;
+    background-position: center;
+    perspective: 1000px;
+}
+.form-container form{
+    margin-bottom: 12%;
+   height: 210px;
+   width: 350px;
+   background: rgba(255, 255, 255, .1);
+   text-align: center;
+   align-items: center;
+   border-radius: 5px;
+   box-shadow: 0 5px 15px rgba(0,0,0,.3);
+   border-top: 1px solid  rgba(255, 255, 255, .3);
+   border-left: 1px solid  rgba(255, 255, 255, .3);
+   backdrop-filter: blur(10px);
+   transform-style:preserve-3d ;
+
+
+}
+.form-container form input{
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 82%;
+  background: rgba(0, 0, 0, .1);
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 5px rgba(0, 0, 0, .5) inset;
+  font-size: 17px;
+  padding: 0 10px;
+  margin: 15px 0;
+  letter-spacing: 1px;
+  border-radius: 15px;
+}
+.form-container form input[type="Submit"]{
+    width: 90%;
+    cursor: pointer;
+    background: linear-gradient(90deg,deeppink,blueviolet);
+    margin-top:12px ;
+    border-radius: 50px;
+}
+.form-container form input[type="Submit"]:hover{
+    letter-spacing: 4px;
+}
+</style>
+<body>
+<img src="{% static 'D-fault.png' %}" />
+<nav class="navbar">
+<ul>
+  <li><a href="#">Contact Us</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Home</a></li>
+</ul>
+</nav>
+</header>
+<div class="form-container">
+    <h1>LOGIN</h1>
+    <form action="login" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" /><br />
+        <input type="password" name="password" placeholder="Password" /><br />
+        <input type="Submit" />
+    </form>
+    </div>
+    <div>
+        {% for message in messages %}
+        <h3> {{message}} </h3>
+        {% endfor %}
+    </div>
+  </body>
+</html>

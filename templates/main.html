@@ -1,0 +1,453 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale.0" />
+    <title>Main</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container .calender {
+        display: flex;
+        justify-content: center;
+        margin-top: -37px;
+        margin-bottom: 2%;
+      }
+      .calender label {
+        margin-top: 3px;
+        color: white;
+        font-size: 17.2px;
+        font-family: "Merriweather Sans", sans-serif;
+      }
+      #date {
+        margin: 1px;
+        cursor: pointer;
+      }
+      img {
+        height: 63px;
+        display: block;
+        float: left;
+        margin: -11px 17px;
+        cursor: pointer;
+      }
+      .navbar {
+        margin-top: 20px;
+        margin-left: 16%;
+        margin-right: 1%;
+        background-color: rgb(49, 49, 49);
+        border-radius: 30px;
+      }
+      .navbar ul {
+        overflow: auto;
+      }
+      .navbar li {
+        float: left;
+        list-style: none;
+        margin: 13px 20px;
+      }
+      .navbar li a {
+        padding: 3px 30px;
+        text-decoration: none;
+        color: white;
+        font-family: "Merriweather Sans", sans-serif;
+      }
+      .navbar li a:hover {
+        color: rgb(22, 119, 255);
+      }
+      .table-box {
+        margin: 50px auto;
+      }
+      .table-row {
+        display: table;
+        width: 80%;
+        margin: 10px auto;
+        font-family: sans-serif;
+        background: transparent;
+        padding: 12px 0;
+        color: #555;
+        font-size: 13px;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 50, 0.3);
+      }
+      .table-cell {
+        display: table-cell;
+        width: 30%;
+        text-align: center;
+        padding: 4px 0;
+        border-right: 1px solid ghostwhite;
+        vertical-align: middle;
+      }
+      .table-head {
+        background: blueviolet;
+        box-shadow: none;
+        color: white;
+        font-weight: 600;
+      }
+      .table-head .table-cell {
+        border-right: none;
+      }
+      .last-cell {
+        border-right: none;
+      }
+      #present {
+        cursor: pointer;
+      }
+      #absent {
+        cursor: pointer;
+      }
+      #submit {
+        color: white;
+        font-weight: bolder;
+        width: 13%;
+        cursor: pointer;
+        background: blueviolet;
+        margin-left: 43%;
+        margin-top: -34px;
+        border-radius: 20px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+      }
+      #submit:hover {
+        letter-spacing: 4px;
+      }
+      #reset {
+        color: white;
+        font-weight: bolder;
+        width: 13%;
+        cursor: pointer;
+        background: blueviolet;
+        margin-left: 43%;
+        margin-top: 4px;
+        margin-bottom: 6px;
+        border-radius: 20px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+      }
+      #reset:hover {
+        letter-spacing: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="{% static 'D-fault.png' %}" />
+    <nav class="navbar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <form action="postgresql.backend">
+      {% csrf_token %}
+      <div class="container">
+        <div class="calender">
+          <label for="date">Date:  </label>
+          <input type="date" id="date" name="myDat value="1"e" />
+        </div>
+        <div class="table-box">
+          <div class="table-row table-head">
+            <div class="table-cell">
+              <p>Roll No</p>
+            </div>
+            <div class="table-cell">
+              <p>Name</p>
+            </div>
+            <div class="table-cell last-cell">
+              <p>Attendance</p>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>1</p>
+            </div>
+            <div class="table-cell">
+              <p>Asim Mohammad</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="1" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="1"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>2</p>
+            </div>
+            <div class="table-cell">
+              <p>Yogesh Jain</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="2" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="2"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>3</p>
+            </div>
+            <div class="table-cell">
+              <p>Vaibhav Deshmukh</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="3" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="3"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>4</p>
+            </div>
+            <div class="table-cell">
+              <p>Tejas Kolwankar</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="4" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="4"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>5</p>
+            </div>
+            <div class="table-cell">
+              <p>Naman Pandey</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="5" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="5"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>6</p>
+            </div>
+            <div class="table-cell">
+              <p>Shivaay Pal</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="6" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="6"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>7</p>
+            </div>
+            <div class="table-cell">
+              <p>Tushar Mittal</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="7" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="7"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>8</p>
+            </div>
+            <div class="table-cell">
+              <p>Akshay Hegde</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="8" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="8"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>9</p>
+            </div>
+            <div class="table-cell">
+              <p>Sahil Patil</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="9" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="9"  value="0"/>
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>10</p>
+            </div>
+            <div class="table-cell">
+              <p>Kaustubh Gharat</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="10" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="10" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>11</p>
+            </div>
+            <div class="table-cell">
+              <p>Nidan Gawali</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="11" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="11" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>12</p>
+            </div>
+            <div class="table-cell">
+              <p>Pankaj Parte</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="12" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="12" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>13</p>
+            </div>
+            <div class="table-cell">
+              <p>Manish Mandal</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="13" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="13" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>14</p>
+            </div>
+            <div class="table-cell">
+              <p>Dhruvil Mehta</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="14" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="14" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>15</p>
+            </div>
+            <div class="table-cell">
+              <p>Vaibhav Bhalala</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="15" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="15" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>16</p>
+            </div>
+            <div class="table-cell">
+              <p>Prem Bhanushali</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="16" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="16" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>17</p>
+            </div>
+            <div class="table-cell">
+              <p>Swajeet Chavan</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="17" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="17" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>18</p>
+            </div>
+            <div class="table-cell">
+              <p>Prince Pandey</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="18" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="18" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+          <div class="table-row">
+            <div class="table-cell">
+              <p>19</p>
+            </div>
+            <div class="table-cell">
+              <p>Jainil Shah</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="19" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="19" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+
+          <div class="table-row">
+            <div class="table-cell">
+              <p>20</p>
+            </div>
+            <div class="table-cell">
+              <p>Jay Wanjari</p>
+            </div>
+            <div class="table-cell last-cell">
+              <input type="radio" id="present" name="20" value="1" />
+              <label for="present">Present</label>
+              <input type="radio" id="absent" name="20" value="0" />
+              <label for="absent">Absent</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <input type="submit" id="submit" value="Submit Now" />
+          <input type="reset" id="reset" value="Reset Now" />
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
